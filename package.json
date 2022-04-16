@@ -37,6 +37,10 @@
     "@google/model-viewer": "1.10.1",
     "core-js": "^3.6.5",
     "sass-loader": "^12.6.0",
+    "web3": "^1.7.3",
+    "@metamask/detect-provider": "^1.2.0",
+    "@walletconnect/web3-provider": "^1.7.7",
+    "@coinbase/wallet-sdk": "^3.0.6",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -68,5 +72,5 @@
     "not dead"
   ],
   "author": "digination",
-  "license": "ISC"
+  "license": "MIT"
 }
