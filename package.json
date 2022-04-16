@@ -12,15 +12,19 @@
     "ethers.js",
     "web3js",
     "3d",
-    "glb"
+    "glb",
+    "digination",
+    "digination game",
+    "Metaverse",
+    "lands"
   ],
-  "homepage": "https://github.com/Daudxu/digination-ui",
+  "homepage": "https://github.com/digination-game/digination-ui",
   "bugs": {
-    "url": "https://github.com/Daudxu/digination-ui/issues"
+    "url": "https://github.com/digination-game/digination-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Daudxu/digination-ui.git"
+    "url": "https://github.com/digination-game/digination-ui.git"
   },
   "scripts": {
     "dev": "vue-cli-service serve",
