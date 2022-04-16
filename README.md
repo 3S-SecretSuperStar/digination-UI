@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://daudxu.github.io/digination-ui-doc/">
+    <a href="https://digination-game.github.io/digination-ui-doc/">
         <img  src="./images/logo.png">
     </a>
 </p>
@@ -7,11 +7,11 @@
 <h1 align="center">Digination ui</h1>
 <h3 align="center">Digination UI is a simple block chain oriented component library based on Vue</h3>
 
-[![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://github.com/Daudxu/digination-ui)
-[![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://github.com/Daudxu/digination-ui)
+[![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://github.com/digination-game/digination-ui)
+[![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://github.com/digination-game/digination-ui)
 
 ## Docs
-**[Digination UI 1.x](https://daudxu.github.io/digination-ui-doc/)** 
+**[Digination UI 1.x](https://digination-game.github.io/digination-ui-doc/)** 
 
 ## Features
 
