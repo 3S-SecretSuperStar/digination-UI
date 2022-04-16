@@ -55,10 +55,8 @@ export default class Web3Model {
     }
   
     async signTypedData (msgParams) {
-      if (await this.checkCurrentNetwork()) {
         const accounts = await this.web3.eth.getAccounts()
         return await this.signMsg(accounts[0], msgParams)
-      }
     }
   
     async signMsg (account, msgParams) {
@@ -86,15 +84,11 @@ export default class Web3Model {
    
     // ERC20 BASE FUNCTION OPTION
     async getTotalSupply () {
-      if (await this.checkCurrentNetwork()) {
         return await this.myContract.methods.totalSupply().call({ from: this.contract })
-      }
     }
   
     async getBalanceOf (account) {
-      if (await this.checkCurrentNetwork()) {
         return await this.myContract.methods.balanceOf(account).call({ from: this.contract })
-      }
     }
   
     async getAllowance (owner, spender) {
