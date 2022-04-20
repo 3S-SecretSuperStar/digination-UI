@@ -17,12 +17,13 @@
                   @click="handleClickTest">test</button>
 
           <button class="btn btn-error"
-                  @click="handleClickCeshi">Ceshi</button>
-
-                  
+                  @click="handleClickCeshi">Ceshi</button>       
         </div>
       </div>
     </div>
+    <digi-dialog > 
+      <div>123123123 </div>
+    </digi-dialog>
   </div>
 
 </template>

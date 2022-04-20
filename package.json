@@ -31,26 +31,28 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name digination-ui  --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib packages/index.js"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.0.6",
     "@google/model-viewer": "1.10.1",
-    "core-js": "^3.6.5",
-    "sass-loader": "^12.6.0",
-    "web3": "^1.7.3",
     "@metamask/detect-provider": "^1.2.0",
     "@walletconnect/web3-provider": "^1.7.7",
-    "@coinbase/wallet-sdk": "^3.0.6",
-    "vue": "^2.6.11"
+    "web3": "^1.7.3",
+    "core-js": "^3.4.4",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.15",
-    "@vue/cli-plugin-eslint": "~4.5.15",
-    "@vue/cli-service": "~4.5.15",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.23.7",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
@@ -59,18 +61,14 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "@vue/standard"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "author": "digination",
-  "license": "MIT"
+    "last 2 versions"
+  ]
 }

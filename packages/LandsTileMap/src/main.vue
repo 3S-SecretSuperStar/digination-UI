@@ -157,10 +157,10 @@ export default {
       }
       var nc = document.createElement('canvas');
       this.ctx.drawImage(nc, 0, 0);
-      this.myCanvas.addEventListener('click', this.handleClickTile);
+      this.myCanvas.addEventListener('click', this.handleClickTile)
     },
     canvasEventsInit () {
-      var _this = this;
+      var _this = this
       var canvas = _this.myCanvas;
       canvas.onmousedown = function (event) {
         var imgx = _this.paintingX;

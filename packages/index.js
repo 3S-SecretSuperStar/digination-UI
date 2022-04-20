@@ -7,10 +7,12 @@ import Web3Model from './Web3Model/index'
 import Toast from './Toast/index'
 import Loading from './Loading/index'
 import LandsTileMap from './LandsTileMap/index'
+import DigiDialog from './Dialog/index'
 import ModelViewer from './ModelViewer/index'
 // 以数组的结构保存组件，便于遍历
 const components = [
   LandsTileMap,
+  DigiDialog,
   ModelViewer
 ]
 
