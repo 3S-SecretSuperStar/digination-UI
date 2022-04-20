@@ -6,9 +6,10 @@
           <slot name="title">
             <span class="hm-dialog__title">{{title}}</span>
           </slot>
-          <button class="hm-dialog__headerbtn" @click="handleClose">
-            <i class="hm-icon-close">X</i>
-          </button>
+          <a class="hm-dialog__headerbtn" @click="handleClose">
+            <!-- <i class="hm-icon-close">X</i> -->
+            <img :src="closeIco">
+          </a>
         </div>
         <div class="hm-dialog__body">
           <slot></slot>
@@ -21,12 +22,15 @@
   </transition>
 </template>
 <script>
+
+import closeMode from "../../assets/img/close.png";
+
 export default {
   name: 'DigiDialog',
   props: {
     title: {
       type: String,
-      default: '提示'
+      default: 'info'
     },
     width: {
       type: String,
@@ -35,6 +39,10 @@ export default {
     top: {
       type: String,
       default: '15vh'
+    },
+    closeIco: {
+      type: String,
+      default: closeMode
     },
     visible: {
       type: Boolean,
@@ -69,9 +77,14 @@ export default {
     box-shadow: 0 1px 3px rgba(0,0,0,.3);
     box-sizing: border-box;
     width: 30%;
+    background-color: #efefef;
+    border-radius: 8px;
     .hm-dialog__header{
       display: flex;
       justify-content: space-between;
+      padding: 10px;
+      align-items: center;
+      
     }
     __header {
       padding: 20px 20px 10px;

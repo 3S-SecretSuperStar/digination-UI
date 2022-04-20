@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <digi-dialog with="20%" top="200px" :visible.sync="visible">
+    <digi-dialog title="bind" width="20%" top="200px" :visible.sync="visible">
       <div>123123123 </div>
     </digi-dialog>
   </div>
