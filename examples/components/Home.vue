@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <digi-dialog > 
+    <digi-dialog with="20%" top="200px" :visible.sync="visible">
       <div>123123123 </div>
     </digi-dialog>
   </div>
@@ -57,6 +57,7 @@ export default {
   },
   data () {
     return {
+      visible: false,
       baseModel: '',
       provider: '',
       providerOptions: {
@@ -138,15 +139,16 @@ export default {
       this.provider = ''
     },
     handleClickTest () {
-      if(typeof(this.provider.isMetaMask) !== 'undefined' && this.provider.isMetaMask === true){
-          console.log(1)
-      }else{
-          console.log(2)
+      if (typeof (this.provider.isMetaMask) !== 'undefined' && this.provider.isMetaMask === true) {
+        console.log(1)
+      } else {
+        console.log(2)
       }
     },
     async handleClickCeshi () {
-     var sa = await this.baseModel.getChainDetailById(4)
-     console.log(sa)
+    //  var sa = await this.baseModel.getChainDetailById(4)
+    //  console.log(sa)
+      this.visible = true
     },
   }
 }

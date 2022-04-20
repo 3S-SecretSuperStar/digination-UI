@@ -7,7 +7,7 @@
             <span class="hm-dialog__title">{{title}}</span>
           </slot>
           <button class="hm-dialog__headerbtn" @click="handleClose">
-            <i class="hm-icon-close"></i>
+            <i class="hm-icon-close">X</i>
           </button>
         </div>
         <div class="hm-dialog__body">
@@ -69,7 +69,10 @@ export default {
     box-shadow: 0 1px 3px rgba(0,0,0,.3);
     box-sizing: border-box;
     width: 30%;
-
+    .hm-dialog__header{
+      display: flex;
+      justify-content: space-between;
+    }
     __header {
       padding: 20px 20px 10px;
       .hm-dialog__title {
