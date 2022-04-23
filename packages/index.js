@@ -4,16 +4,20 @@
 // 导入单个组件
 import WalletModalModel from './WalletModalModel/index'
 import Web3Model from './Web3Model/index'
+// 全局
 import Toast from './Toast/index'
 import Loading from './Loading/index'
+// 模板组件
 import LandsTileMap from './LandsTileMap/index'
 import DigiDialog from './Dialog/index'
 import ModelViewer from './ModelViewer/index'
+import DigiButton from './DigiButton/index'
 // 以数组的结构保存组件，便于遍历
 const components = [
   LandsTileMap,
+  ModelViewer,
   DigiDialog,
-  ModelViewer
+  DigiButton
 ]
 
 // 定义 install 方法
