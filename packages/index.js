@@ -12,12 +12,14 @@ import LandsTileMap from './LandsTileMap/index'
 import DigiDialog from './Dialog/index'
 import ModelViewer from './ModelViewer/index'
 import DigiButton from './DigiButton/index'
+import DigiInput from './DigiInput/index'
 // 以数组的结构保存组件，便于遍历
 const components = [
   LandsTileMap,
   ModelViewer,
   DigiDialog,
-  DigiButton
+  DigiButton,
+  DigiInput
 ]
 
 // 定义 install 方法
