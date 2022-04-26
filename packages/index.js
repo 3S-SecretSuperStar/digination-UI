@@ -11,8 +11,8 @@ import Loading from './Loading/index'
 import LandsTileMap from './LandsTileMap/index'
 import DigiDialog from './Dialog/index'
 import ModelViewer from './ModelViewer/index'
-import DigiButton from './DigiButton/index'
-import DigiInput from './DigiInput/index'
+import DigiButton from './Button/index'
+import DigiInput from './Input/index'
 // 以数组的结构保存组件，便于遍历
 const components = [
   LandsTileMap,
