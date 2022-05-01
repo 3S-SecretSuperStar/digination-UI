@@ -11,7 +11,6 @@ instance.show = false
 
 const Loading = {
     show() {
-        console.log(123123)
         instance.show = true
         document.body.appendChild(instance.$el)
     },
