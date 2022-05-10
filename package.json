@@ -1,6 +1,6 @@
 {
   "name": "@digination/digination-ui",
-  "version": "1.0.9",
+  "version": "1.0.8",
   "private": false,
   "keyword": [
     "Dapp",
@@ -34,6 +34,10 @@
     "lib": "vue-cli-service build --target lib --name digination-ui  --dest lib packages/index.js"
   },
   "dependencies": {
+    "@coinbase/wallet-sdk": "^3.0.6",
+    "@metamask/detect-provider": "^1.2.0",
+    "@walletconnect/web3-provider": "^1.7.7",
+    "web3": "^1.7.3",
     "@google/model-viewer": "^1.9.1",
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
