@@ -77,12 +77,11 @@ export default {
   border-radius: 5px;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   outline: none;
-  height: 3rem;
+  height: 2.5rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  line-height: 1.25rem;
   line-height: 0em;
-  min-height: 3rem;
+  min-height: 2.5rem;
   font-weight: 600;
   transition: 0.2s all;
   transform: scale(1);
