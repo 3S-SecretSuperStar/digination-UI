@@ -72,12 +72,18 @@ export default {
   align-items: center;
   border: none;
   padding: 12px 40px;
-  line-height: 1;
   font-size: .875rem;
   color: #fff;
   border-radius: 5px;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   outline: none;
+  height: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  line-height: 1.25rem;
+  line-height: 0em;
+  min-height: 3rem;
+  font-weight: 600;
   transition: 0.2s all;
   transform: scale(1);
   &:active{
@@ -240,4 +246,26 @@ export default {
     margin-left: 5px;
 }
 @keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+.btn-lg {
+    height: 4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    min-height: 4rem;
+    font-size: 1.125rem;
+}
+
+.btn-sm {
+    height: 2rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    min-height: 2rem;
+    font-size: .875rem;
+}
+.btn-xs {
+    height: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    min-height: 1.5rem;
+    font-size: .75rem;
+}
 </style>

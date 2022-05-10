@@ -51,6 +51,12 @@
         <div class="item">
             <digi-button   type="primary" :loading="loading">loading</digi-button>
         </div>
+        <div class="item">
+            <digi-button   type="primary btn-lg">loading</digi-button>
+            <digi-button   type="primary">loading</digi-button>
+            <digi-button   type="primary btn-sm">loading</digi-button>
+            <digi-button   type="primary btn-xs">loading</digi-button>
+        </div>
       </div>
 
     </div>
