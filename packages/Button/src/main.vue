@@ -1,9 +1,10 @@
 <template>
-  <button class="hm-button" :class="[`hm-button--${type}`, {
+  <button class="btu" :class="[`digi-button--${type}`, {
     'is-plain': plain,
     'is-round': round,
     'is-circle': circle,
-    'is-disabled': disabled
+    'is-disabled': disabled,
+    'is-loading': loading
     }]"
     :disabled="disabled"
     @click="handleClick"
@@ -43,6 +44,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -54,87 +59,70 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hm-button {
-  display: inline-block;
+
+.btu{
+  text-decoration: none;
+  border: none;
+  padding: 12px 40px;
   line-height: 1;
-  white-space: nowrap;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   cursor: pointer;
-  background: #fff;
-  border: 1px solid #dcdfe6;
-  color: #606266;
-  -webkit-appearance: none;
-  text-align: center;
-  box-sizing: border-box;
   outline: none;
-  margin: 0;
-  transition: 0.1s;
-  font-weight: 500;
-  // 禁止元素的文字被选中
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  padding: 12px 20px;
-  font-size: 14px;
-  border-radius: 4px;
-  &:hover,
-  &:focus {
-    color: #409eff;
-    border-color: #c6e2ff;
-    background-color: #ecf5ff;
+  transition: 0.2s all;
+  transform: scale(1);
+  &:active{
+     transform: scale(0.97);
   }
 }
 
-.hm-button--primary {
+.digi-button--primary {
   color: #fff;
   background-color: #409eff;
   border-color: #409eff;
-
-  &:hover,
-  &:focus {
+  &:hover {
     background: #66b1ff;
     border-color: #66b1ff;
     color: #fff;
   }
 }
-.hm-button--success {
+.digi-button--success {
   color: #fff;
   background-color: #67c23a;
   border-color: #67c23a;
-  &:hover,
-  &:focus {
+  &:hover{
     background: #85ce61;
     border-color: #85ce61;
     color: #fff;
   }
 }
-.hm-button--info {
+.digi-button--info {
   color: #fff;
   background-color: #909399;
   border-color: #909399;
-  &:hover,
-  &:focus {
+  &:hover{
     background: #a6a9ad;
     border-color: #a6a9ad;
     color: #fff;
   }
 }
-.hm-button--warning {
+.digi-button--warning {
   color: #fff;
   background-color: #e6a23c;
   border-color: #e6a23c;
-  &:hover,
-  &:focus {
+  &:hover{
     background: #ebb563;
     border-color: #ebb563;
     color: #fff;
   }
 }
-.hm-button--danger {
+.digi-button--danger {
   color: #fff;
   background-color: #f56c6c;
   border-color: #f56c6c;
-  &:hover,
-  &:focus {
+  &:hover{
     background: #f78989;
     border-color: #f78989;
     color: #fff;
@@ -142,83 +130,100 @@ export default {
 }
 
 // 朴素的按钮
-.hm-button.is-plain {
-  &:hover,
-  &:focus {
+.digi-button.is-plain {
+  &:hover {
     background: #fff;
     border-color: #409eff;
     color: #409eff;
   }
 }
-.hm-button--primary.is-plain {
+.digi-button--primary.is-plain {
   color: #a2a8ad;
   background: #ecf5ff;
   border-color: #b3d8ff;
-  &:hover,
-  &:focus {
+  &:hover{
     background: #409eff;
     border-color: #409eff;
     color: #fff;
   }
 }
-.hm-button--success.is-plain {
+.digi-button--success.is-plain {
   color: #67c23a;
   background: #f0f9eb;
   border-color: #c2e7b0;
-  &:hover,
-  &:focus {
+  &:hover {
     background: #67c23a;
     border-color: #67c23a;
     color: #fff;
   }
 }
 
-.hm-button--info.is-plain {
+.digi-button--info.is-plain {
   color: #909399;
   background: #f4f4f5;
   border-color: #d3d4d6;
-  &:hover,
-  &:focus {
+  &:hover {
     background: #909399;
     border-color: #909399;
     color: #fff;
   }
 }
-.hm-button--warning.is-plain {
+.digi-button--warning.is-plain {
   color: #e6a23c;
   background: #fdf6ec;
   border-color: #f5dab1;
-  &:hover,
-  &:focus {
+  &:hover{
     background: #e6a23c;
     border-color: #e6a23c;
     color: #fff;
   }
 }
-.hm-button--danger.is-plain {
+.digi-button--danger.is-plain {
   color: #f56c6c;
   background: #fef0f0;
   border-color: #fbc4c4;
-  &:hover,
-  &:focus {
+  &:hover {
     background: #f56c6c;
     border-color: #f56c6c;
     color: #fff;
   }
 }
 
-.hm-button.is-round {
+.digi-button.is-round {
   border-radius: 20px;
   padding: 12px 23px;
 }
 
 // 原形按钮
-.hm-button.is-circle {
+.digi-button.is-circle {
   border-radius: 50%;
   padding: 12px;
 }
 
-.hm-button [class*=hm-icon-]+span {
+.digi-button [class*=hm-icon-]+span {
     margin-left: 5px;
+}
+
+.is-loading:before{
+    content:'';
+    display:inline-block;
+    width:1em;
+    height:1em;
+    margin-right:1em;
+    color:#fff;
+    border:2px solid #fff;
+    border-radius: 50%;
+    vertical-align: -10%;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
+    animation:rotate 1s linear infinite;
+}
+
+@keyframes rotate{
+    from{
+      transform:rotatez(0deg);
+    }
+    to{
+      transform:rotatez(360deg);
+    }
 }
 </style>

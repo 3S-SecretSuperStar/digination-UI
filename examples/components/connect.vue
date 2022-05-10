@@ -1,21 +1,30 @@
 <template>
-  <div class="demo-main">
+  <div class="hero min-h-screen">
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content">
       <div >
-        <h1 class="mb-5 text-5xl font-bold">Digi Button </h1>
-        <p class="mb-5">Digi Button plugin.</p>
-        <digi-button   type="primary" >button</digi-button>
-        <digi-button   type="success" >button</digi-button>
-        <digi-button   type="info" >button</digi-button>
-        <digi-button   type="warning" >button</digi-button>
-        <digi-button   type="danger" >button</digi-button>
+        <h1 class="mb-5 text-5xl font-bold">Dapp Wallet Modal</h1>
+        <p class="mb-5">Dapp ETH Wallet Modal plugin.</p>
+        <!-- <button class="btn btn-primary">Get Started</button> -->
+        <digi-button   type="primary" loading="true">aaa</digi-button>
+        <div v-show="provider === ''">
+          <button class="btn btn-success"
+                  @click="handleClickConnect">Connect</button>
+        </div>
+        <div v-show="provider">
+          <button class="btn btn-error"
+                  @click="handleClickDisconnect">disconnect</button>
+          <button class="btn btn-error"
+                  @click="handleClickTest">test</button>
 
-      </div>
-      <div>
-                <digi-button   type="primary" loading="true">loading</digi-button>
+          <button class="btn btn-error"
+                  @click="handleClickCeshi">Ceshi</button>       
+        </div>
       </div>
     </div>
+    <digi-dialog title="bind" width="20%" top="200px" :visible.sync="visible">
+      <div>123123123 </div>
+    </digi-dialog>
   </div>
 
 </template>
@@ -145,14 +154,17 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
-.demo-main{
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  
-  button{
-    margin-right: 10px;
-  }
+<style scoped>
+.btu button,
+label {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.py-8 textarea,
+.py-4 input {
+  width: 100%;
+}
+.modal-box {
+  color: #000;
 }
 </style>
