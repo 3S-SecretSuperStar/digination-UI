@@ -14,7 +14,7 @@
         <div
           v-if="item.timeOut > 0 && item.showProgress"
           class="progress rounded-0"
-          style="height: 6px;"
+          style="height: 0px;"
         >
           <div :class="'bg-' + item.type" :style="{ width: getCurrentProgress(item) + '%' }" />
         </div>
@@ -60,7 +60,7 @@ export default {
     },
     timeOut: {
       type: Number,
-      default: 30000
+      default: 5000
     },
     closeable: {
       type: Boolean,
@@ -263,7 +263,92 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+ .bg-success{
+  background: #28a745!important
+}
+
+.bg-info{
+  background-color:#17a2b8!important
+}
+
+.bg-warning{
+  background-color: #ffc107!important;
+}
+
+.bg-error{
+  background-color: #dc3545!important;
+}
+
+$toast-max-width: 350px;
+$toast-font-size: .875rem;
+$toast-background-color: rgba(255,255,255,.85);
+$toast-border-width: 1px;
+$toast-border-color: rgba(0,0,0,.1);
+$toast-border-radius:0.25rem;
+$toast-box-shadow:0 0.25rem 0.75rem rgb(0 0 0 / 10%);
+$toast-padding-x: 0.5rem;
+
+.toast {
+  max-width: $toast-max-width;
+  overflow: hidden;
+  font-size: $toast-font-size;
+  background-color: $toast-background-color;
+  background-clip: padding-box;
+  border: $toast-border-width solid $toast-border-color;
+  border-radius: $toast-border-radius;
+  box-shadow: $toast-box-shadow;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+
+  &:not(:last-child) {
+    margin-bottom: $toast-padding-x;
+  }
+
+  &.showing {
+    opacity: 1;
+  }
+
+  &.show {
+    display: block;
+    opacity: 1;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+$toast-padding-y: .25rem;
+$toast-padding-x: .75rem;
+$toast-header-color:#6c757d;
+$toast-header-background-color:rgba(255,255,255,.85);
+$toast-border-width:1px;
+$toast-header-border-color:rgba(0,0,0,.05);
+
+.toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $toast-padding-y $toast-padding-x;
+  color: $toast-header-color;
+  background-color: $toast-header-background-color;
+  background-clip: padding-box;
+  border-bottom: $toast-border-width solid $toast-header-border-color;
+}
+
+.toast-body {
+  padding: $toast-padding-x; // apply to both vertical and horizontal
+}
+
+.close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+}
 .toast-container {
   position: fixed;
   top: 20px;
