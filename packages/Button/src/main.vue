@@ -61,15 +61,22 @@ export default {
 <style lang="scss" scoped>
 
 .btu{
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
   text-decoration: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
   border: none;
   padding: 12px 40px;
   line-height: 1;
-  font-size: 16px;
+  font-size: .875rem;
   color: #fff;
   border-radius: 5px;
   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
-  cursor: pointer;
   outline: none;
   transition: 0.2s all;
   transform: scale(1);
@@ -77,7 +84,25 @@ export default {
      transform: scale(0.97);
   }
 }
-
+*, :before, :after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+}
+.is-loading:before{
+    content: "";
+    margin-right: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    border-width: 2px;
+    animation: spin 2s linear infinite;
+    border-top-color: #fffafa00;
+    border-left-color: transparent;
+    border-bottom-color: currentColor;
+    border-right-color: currentColor;
+}
 .digi-button--primary {
   color: #fff;
   background-color: #409eff;
@@ -189,41 +214,30 @@ export default {
   }
 }
 
-.digi-button.is-round {
+.btu.is-round {
   border-radius: 20px;
   padding: 12px 23px;
 }
 
 // 原形按钮
-.digi-button.is-circle {
+.btu.is-circle {
   border-radius: 50%;
   padding: 12px;
 }
 
-.digi-button [class*=hm-icon-]+span {
+.btu.is-disabled {
+  color: #6d6969;
+  background: #fef0f0;
+  border-color: #494747;
+  &:hover {
+    background: #4b4747;
+    border-color: #2c2424;
+    color: #fff;
+  }
+}
+
+.btu [class*=hm-icon-]+span {
     margin-left: 5px;
 }
-
-.is-loading:before{
-    content:'';
-    display:inline-block;
-    width:1em;
-    height:1em;
-    margin-right:1em;
-    color:#fff;
-    border:2px solid #fff;
-    border-radius: 50%;
-    vertical-align: -10%;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
-    animation:rotate 1s linear infinite;
-}
-
-@keyframes rotate{
-    from{
-      transform:rotatez(0deg);
-    }
-    to{
-      transform:rotatez(360deg);
-    }
-}
+@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
 </style>
