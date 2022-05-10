@@ -1,3 +1,7 @@
-import Toast from './src/main.js'
+import DigiToasts from "./src/main.vue";
 
-export default Toast
+DigiToasts.install = function (Vue) {
+  Vue.component(DigiToasts.name, DigiToasts);
+};
+
+export default DigiToasts;

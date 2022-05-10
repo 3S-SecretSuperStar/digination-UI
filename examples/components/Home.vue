@@ -7,64 +7,21 @@
         <p class="mb-5">Digi Button plugin.</p>
 
         <div class="item">
-            <digi-button   type="primary" >button</digi-button>
+            <digi-button   type="primary" @click="handleClick()" >button</digi-button>
             <digi-button   type="success" >button</digi-button>
             <digi-button   type="info" >button</digi-button>
             <digi-button   type="warning" >button</digi-button>
             <digi-button   type="danger" >button</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary" :plain="plain">button</digi-button>
-            <digi-button   type="success" :plain="plain">button</digi-button>
-            <digi-button   type="info" :plain="plain">button</digi-button>
-            <digi-button   type="warning" :plain="plain">button</digi-button>
-            <digi-button   type="danger" :plain="plain">button</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary" :round="round">button</digi-button>
-            <digi-button   type="success" :round="round">button</digi-button>
-            <digi-button   type="info" :round="round">button</digi-button>
-            <digi-button   type="warning" :round="round">button</digi-button>
-            <digi-button   type="danger" :round="round">button</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary" >button</digi-button>
-            <digi-button   type="success" >button</digi-button>
-            <digi-button   type="info" >button</digi-button>
-            <digi-button   type="warning" >button</digi-button>
-            <digi-button   type="danger" >button</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary" :circle="circle">button</digi-button>
-            <digi-button   type="success" :circle="circle">button</digi-button>
-            <digi-button   type="info" :circle="circle">button</digi-button>
-            <digi-button   type="warning" :circle="circle">button</digi-button>
-            <digi-button   type="danger" :circle="circle">button</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary" :disabled="disabled">button</digi-button>
-            <digi-button   type="success" :disabled="disabled">button</digi-button>
-            <digi-button   type="info" :disabled="disabled">button</digi-button>
-            <digi-button   type="warning" :disabled="disabled">button</digi-button>
-            <digi-button   type="danger" :disabled="disabled">button</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary" :loading="loading">loading</digi-button>
-        </div>
-        <div class="item">
-            <digi-button   type="primary btn-lg">loading</digi-button>
-            <digi-button   type="primary">loading</digi-button>
-            <digi-button   type="primary btn-sm">loading</digi-button>
-            <digi-button   type="primary btn-xs">loading</digi-button>
         </div>
       </div>
 
     </div>
+    <digi-toasts></digi-toasts>
   </div>
 
 </template>
 
- <script>
+<script>
 export default {
   name: 'Home',
   props: {
@@ -72,12 +29,18 @@ export default {
   },
   data () {
     return {
-        visible: false,
-        plain: true,
-        round: true,
-        loading: true,
-        circle: true,
-        disabled: true
+      visible: false,
+      plain: true,
+      round: true,
+      loading: true,
+      circle: true,
+      disabled: true
+    }
+  },
+  methods: {
+    handleClick () {
+      // this.$Toast{'123123'}
+      this.$toast.success('currentMessage')
     }
   }
 }

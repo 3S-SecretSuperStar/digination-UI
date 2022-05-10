@@ -1,23 +1,23 @@
-import Vue from 'vue';
-import Main from './main.vue'
+import Vue from "vue";
+import Main from "./main.vue";
 
 let DigiLoading = Vue.extend(Main);
 
 const instance = new DigiLoading({
-    el: document.createElement('div')
-})
+  el: document.createElement("div"),
+});
 
-instance.show = false
+instance.show = false;
 
 const Loading = {
-    show() {
-        instance.show = true
-        document.body.appendChild(instance.$el)
-    },
-    hide() {
-        instance.show = false
-    }
-}
+  show() {
+    instance.show = true;
+    document.body.appendChild(instance.$el);
+  },
+  hide() {
+    instance.show = false;
+  },
+};
 // let instance ;
 // const Loading = function(options) {
 
@@ -37,5 +37,4 @@ const Loading = {
 
 // }
 
-export default Loading
-
+export default Loading;
