@@ -24,9 +24,9 @@
 
 Using npm:
 ```
-npm install digination-ui 
+npm install @digination/digination-ui
 OR
-yarn add digination-ui
+yarn add @digination/digination-ui
 ```
 
 ## Usage
