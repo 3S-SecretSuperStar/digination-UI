@@ -18,7 +18,7 @@
                   @click="handleClickTest">test</button>
 
           <button class="btn btn-error"
-                  @click="handleClickCeshi">Ceshi</button>       
+                  @click="handleClickCeshi">Ceshi</button>
         </div>
       </div>
     </div>
@@ -29,27 +29,27 @@
 
 </template>
 
- <script>
+<script>
 
-import Bean from "../assets/Bean.gif";
+import Bean from '../assets/Bean.gif'
 
-import WalletConnectLogo from "../assets/logos/walletconnect-circle.svg";
+import WalletConnectLogo from '../assets/logos/walletconnect-circle.svg'
 
-import MetaMaskLogo from "../assets/logos/metamask.svg";
+import MetaMaskLogo from '../assets/logos/metamask.svg'
 
-import CoinbaseLogo from "../assets/logos/coinbase.svg";
+import CoinbaseLogo from '../assets/logos/coinbase.svg'
 
-import BlockWalletLogo from "../assets/logos/BlockWallet.png";
+import BlockWalletLogo from '../assets/logos/BlockWallet.png'
 
-import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletConnectProvider from '@walletconnect/web3-provider'
 
-import detectEthereumProvider from '@metamask/detect-provider';
+import detectEthereumProvider from '@metamask/detect-provider'
 
-import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
+import CoinbaseWalletSDK from '@coinbase/wallet-sdk'
 
 // import Web3 from 'web3'
 
-const CHAINID = 4;
+const CHAINID = 4
 
 export default {
   name: 'Home',
@@ -71,16 +71,16 @@ export default {
           metamask: {
             displayView: {
               logo: MetaMaskLogo,
-              name: "MetaMask",
+              name: 'MetaMask'
             },
             options: {
-              drive: detectEthereumProvider,
+              drive: detectEthereumProvider
             }
           },
           walletconnect: {
             displayView: {
               logo: WalletConnectLogo,
-              name: "WalletConnect",
+              name: 'WalletConnect'
             },
             options: {
               drive: WalletConnectProvider,
@@ -95,7 +95,7 @@ export default {
           coinbase: {
             displayView: {
               logo: CoinbaseLogo,
-              name: "Coinbase Wallet",
+              name: 'Coinbase Wallet'
             },
             options: {
               drive: CoinbaseWalletSDK,
@@ -109,17 +109,17 @@ export default {
           blockmallet: {
             displayView: {
               logo: BlockWalletLogo,
-              name: "BlockWallet",
+              name: 'BlockWallet'
             },
             options: {}
           }
-        },
+        }
       }
     }
   },
   mounted () {
     this.baseModel = new this.$WalletModalModel(this.providerOptions)
-    const walletType = sessionStorage.getItem("injected")
+    const walletType = sessionStorage.getItem('injected')
     var _this = this
     if (walletType && typeof (walletType) !== 'undefined') {
       setTimeout(function () {
@@ -150,7 +150,7 @@ export default {
     //  var sa = await this.baseModel.getChainDetailById(4)
     //  console.log(sa)
       this.visible = true
-    },
+    }
   }
 }
 </script>

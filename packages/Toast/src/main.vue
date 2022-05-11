@@ -276,7 +276,7 @@ export default {
   background-color: #ffc107!important;
 }
 
-.bg-error{
+.bg-danger{
   background-color: #dc3545!important;
 }
 

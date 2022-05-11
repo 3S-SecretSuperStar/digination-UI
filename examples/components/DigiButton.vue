@@ -64,7 +64,7 @@
 
 </template>
 
- <script>
+<script>
 export default {
   name: 'Home',
   props: {
@@ -72,12 +72,12 @@ export default {
   },
   data () {
     return {
-        visible: false,
-        plain: true,
-        round: true,
-        loading: true,
-        circle: true,
-        disabled: true
+      visible: false,
+      plain: true,
+      round: true,
+      loading: true,
+      circle: true,
+      disabled: true
     }
   }
 }

@@ -1,14 +1,13 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      <span> Current coordinates {{x}},{{y}}</span>
-    </p>
-    <h5> <span> <button @click="handleClickFilter"> click Filter</button></span> </h5>
-    <h5> <span> <button @click="handleClickFilter"> click Filter</button></span> </h5>
-
-    <div style="display: flex;justify-content: center; margin-top: 20px;">
-      <digi-lands-tile-map ref="landsTileMapRef"
+  <div class="warp">
+        <div >
+            <digi-button   type="info"  @click="handleClickFilter">Filter</digi-button>
+             <p>
+                <span> Current coordinates {{x}},{{y}}</span>
+            </p>
+        </div>
+        <div>
+                <digi-lands-tile-map ref="landsTileMapRef"
                           :tileMapMapmatrix="tileMapMapmatrix"
                           :tiledDigitalColormap="tiledDigitalColormap"
                           :tileSize="tileSize"
@@ -16,18 +15,15 @@
                           :startPaintingY="startPaintingY"
                           @handleClickTile="handleClickTile"
                           @test="ceshi">
-      </digi-lands-tile-map>
-    </div>
+                </digi-lands-tile-map>
+        </div>
   </div>
+
 </template>
 
 <script>
-
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'Home',
   data () {
     return {
       tileMapMapmatrix: [
@@ -83,63 +79,40 @@ export default {
       startPaintingY: 20
     }
   },
-  mounted(){
-    console.log(this.$base)
-  },
   methods: {
     ceshi () {
-      console.log('ceshi');
+      console.log('ceshi')
     },
     handleClickTile (e) {
       if (typeof (this.tileMapMapmatrix[e.clickY][e.clickX]) !== 'undefined') {
-        this.x = e.x;
-        this.y = e.y;
+        this.x = e.x
+        this.y = e.y
       } else {
-        this.x = '';
-        this.y = '';
+        this.x = ''
+        this.y = ''
       }
     },
-   async handleClickFilter () {
- 
-      this.$Toast({msg:'hi my name dan'})
-      var sa = await new this.$Base('','', 4);
-      console.log(await sa.run())
-      var tileMap = this.tileMapMapmatrix;
-      var flag = this.flag;
+    handleClickFilter () {
+      var tileMap = this.tileMapMapmatrix
+      var flag = this.flag
       if (flag) {
-        tileMap = this.$refs.landsTileMapRef.blockCoverage(tileMap, this.tileMapMapmatrixToc);
-        flag = false;
+        tileMap = this.$refs.landsTileMapRef.blockCoverage(tileMap, this.tileMapMapmatrixToc)
+        flag = false
       } else {
-        flag = true;
+        flag = true
       }
-      this.flag = flag;
-      this.$refs.landsTileMapRef.handleClickAssignRender(tileMap);
+      this.flag = flag
+      this.$refs.landsTileMapRef.handleClickAssignRender(tileMap)
     }
   }
 }
 </script>
-
-<style scoped>
-.hello {
+<style scoped lang="scss">
+html,body{
+overflow: hidden;
+}
+.warp{
+  padding-top: 10px;
   text-align: center;
-}
-button {
-  height: 30px;
-  background: #42b983;
-  cursor: pointer;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
