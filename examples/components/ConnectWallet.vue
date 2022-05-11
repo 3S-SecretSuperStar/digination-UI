@@ -1,63 +1,45 @@
 <template>
-
-  <div class="hero min-h-screen">
-    <div class="hero-overlay bg-opacity-60"></div>
-    <div class="hero-content text-center text-neutral-content">
-      <div >
-        <h1 class="mb-5 text-5xl font-bold">Dapp Wallet Modal</h1>
-        <p class="mb-5">Dapp ETH Wallet Modal plugin.</p>
-        <!-- <button class="btn btn-primary">Get Started</button> -->
-        <div v-show="provider === ''">
-          <button class="btn btn-success"
-                  @click="handleClickConnect">Connect</button>
+  <div class="warp">
+        <div  v-show="provider === ''">
+            <digi-button   type="primary"   @click="handleClickConnect()">Connect</digi-button>
         </div>
-        <div v-show="provider">
-          <button class="btn btn-error"
-                  @click="handleClickDisconnect">disconnect</button>
-          <button class="btn btn-error"
-                  @click="handleClickTest">test</button>
-
-          <button class="btn btn-error"
-                  @click="handleClickCeshi">Ceshi</button>
-
-                  
+        <div  v-show="provider">
+            <digi-button   type="warning"   @click="handleClickDisconnect()">Disconnect</digi-button>
         </div>
-      </div>
-    </div>
+        <div class="cl-owner">
+            {{ownerAddress}}
+        </div>
   </div>
 
 </template>
 
- <script>
+<script>
+import Bean from '../assets/Bean.gif'
 
-import Bean from "../assets/Bean.gif";
+import WalletConnectLogo from '../assets/logos/walletconnect-circle.svg'
 
-import WalletConnectLogo from "../assets/logos/walletconnect-circle.svg";
+import MetaMaskLogo from '../assets/logos/metamask.svg'
 
-import MetaMaskLogo from "../assets/logos/metamask.svg";
+import CoinbaseLogo from '../assets/logos/coinbase.svg'
 
-import CoinbaseLogo from "../assets/logos/coinbase.svg";
+import BlockWalletLogo from '../assets/logos/BlockWallet.png'
 
-import BlockWalletLogo from "../assets/logos/BlockWallet.png";
+import WalletConnectProvider from '@walletconnect/web3-provider'
 
-import WalletConnectProvider from "@walletconnect/web3-provider";
+import detectEthereumProvider from '@metamask/detect-provider'
 
-import detectEthereumProvider from '@metamask/detect-provider';
-
-import CoinbaseWalletSDK from '@coinbase/wallet-sdk';
+import CoinbaseWalletSDK from '@coinbase/wallet-sdk'
 
 import Web3 from 'web3'
 
-const CHAINID = 4;
+const CHAINID = 4
 
 export default {
   name: 'Home',
-  props: {
-    msg: String
-  },
   data () {
     return {
-      baseModel: '',
+      ownerAddress: '',
+      walletModalModel: '',
       provider: '',
       providerOptions: {
         logo: Bean,
@@ -69,16 +51,16 @@ export default {
           metamask: {
             displayView: {
               logo: MetaMaskLogo,
-              name: "MetaMask",
+              name: 'MetaMask'
             },
             options: {
-              drive: detectEthereumProvider,
+              drive: detectEthereumProvider
             }
           },
           walletconnect: {
             displayView: {
               logo: WalletConnectLogo,
-              name: "WalletConnect",
+              name: 'WalletConnect'
             },
             options: {
               drive: WalletConnectProvider,
@@ -93,7 +75,7 @@ export default {
           coinbase: {
             displayView: {
               logo: CoinbaseLogo,
-              name: "Coinbase Wallet",
+              name: 'Coinbase Wallet'
             },
             options: {
               drive: CoinbaseWalletSDK,
@@ -107,17 +89,17 @@ export default {
           blockmallet: {
             displayView: {
               logo: BlockWalletLogo,
-              name: "BlockWallet",
+              name: 'BlockWallet'
             },
             options: {}
           }
-        },
+        }
       }
     }
   },
   mounted () {
-    this.baseModel = new this.$ConnectWallet(this.providerOptions)
-    const walletType = sessionStorage.getItem("injected")
+    this.walletModalModel = new this.$WalletModalModel(this.providerOptions)
+    const walletType = sessionStorage.getItem('injected')
     var _this = this
     if (walletType && typeof (walletType) !== 'undefined') {
       setTimeout(function () {
@@ -127,45 +109,27 @@ export default {
   },
   methods: {
     async handleClickConnect () {
-      var provider = await this.baseModel.connect()
+      var provider = await this.walletModalModel.connect()
       if (provider) {
         this.provider = provider
         console.log('provider', provider)
+        this.ownerAddress = provider.selectedAddress
       }
     },
-    handleClickDisconnect () {
-      this.baseModel.disconnect(this.provider)
+    async handleClickDisconnect () {
+      this.walletModalModel.disconnect(this.provider)
       this.provider = ''
-    },
-    handleClickTest () {
-      if(typeof(this.provider.isMetaMask) !== 'undefined' && this.provider.isMetaMask === true){
-          console.log(1)
-      }else{
-          console.log(2)
-      }
-    },
-    async handleClickCeshi () {
-      if(typeof(this.provider.isMetaMask) !== 'undefined' && this.provider.isMetaMask === true){
-         var Web3Model = new this.$Web3Model(this.provider, Web3)
-          console.log(await Web3Model.checkIsMetaMask(this.provider))
-      }else{
-          console.log(2)
-      }
-    },
+      this.ownerAddress = ''
+    }
   }
 }
 </script>
-<style scoped>
-.btu button,
-label {
-  margin-left: 10px;
-  margin-bottom: 10px;
+<style scoped lang="scss">
+.cl-owner{
+  margin-top: 30px;
 }
-.py-8 textarea,
-.py-4 input {
-  width: 100%;
-}
-.modal-box {
-  color: #000;
+
+.warp{
+  text-align: center;
 }
 </style>

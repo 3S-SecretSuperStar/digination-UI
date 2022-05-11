@@ -112,7 +112,6 @@ html,body{
 overflow: hidden;
 }
 .warp{
-  padding-top: 10px;
   text-align: center;
 }
 </style>
