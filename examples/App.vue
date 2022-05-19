@@ -9,11 +9,14 @@ export default {
   name: 'App',
   components: {
     Home
-  },
+  }
 }
 </script>
 
 <style>
+html {
+ background: #8e9b8c;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

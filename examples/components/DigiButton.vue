@@ -14,6 +14,7 @@
             <digi-button   type="danger" >button</digi-button>
         </div>
         <div class="item">
+            <digi-button   type="grey" :plain="plain">button</digi-button>
             <digi-button   type="primary" :plain="plain">button</digi-button>
             <digi-button   type="success" :plain="plain">button</digi-button>
             <digi-button   type="info" :plain="plain">button</digi-button>

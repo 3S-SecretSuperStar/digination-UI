@@ -75,7 +75,7 @@ export default {
   font-size: .875rem;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+//   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
   outline: none;
   height: 2.5rem;
   padding-left: 2rem;
@@ -108,6 +108,25 @@ export default {
     border-bottom-color: currentColor;
     border-right-color: currentColor;
 }
+.digi-button--grey {
+  color: #fff;
+  background-color: #353945;
+  &:hover {
+    background: #fff;
+    color: #353945;
+  }
+}
+.digi-button--border-grey {
+  color: #fff;
+  background-color: #7F8596;
+  border: 1px solid #ffffff;
+  &:hover {
+    background: #ffffff;
+    border: 1px solid #7F8596;
+    color: #7F8596;
+  }
+}
+
 .digi-button--primary {
   color: #fff;
   background-color: #409eff;
@@ -220,7 +239,7 @@ export default {
 }
 
 .btu.is-round {
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 12px 23px;
 }
 
