@@ -1,5 +1,5 @@
 // packages / index.js
-
+import "./assets/icon/iconfont.css";
 // 导入单个组件
 import WalletModalModel from "./WalletModalModel/index";
 import Web3Model from "./Web3Model/index";

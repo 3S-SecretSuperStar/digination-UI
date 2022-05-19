@@ -1,20 +1,20 @@
 <template>
   <transition name="dialog-fade">
-    <div class="hm-dialog__wrapper" v-show="visible" @click.self="handleClose">
-      <div class="hm-dialog" :style="{width, marginTop: top}">
-        <div class="hm-dialog__header">
+    <div class="digi-dialog__wrapper" v-show="visible" @click.self="handleClose">
+      <div class="digi-dialog" :style="{width, marginTop: top}">
+        <div class="digi-dialog__header ">
           <slot name="title">
-            <span class="hm-dialog__title">{{title}}</span>
+            <span class="digi-dialog__title">{{title}}</span>
           </slot>
-          <a class="hm-dialog__headerbtn" @click="handleClose">
-            <!-- <i class="hm-icon-close">X</i> -->
-            <img :src="closeIco">
+          <a class="digi-dialog__headerbtn" @click="handleClose">
+            <!-- <i class="iconfont icon-close-circle" style="color: rgb(212,212,215); font-size: 2.5rem;"></i> -->
+              <img :src="closeIco">
           </a>
         </div>
-        <div class="hm-dialog__body">
+        <div class="digi-dialog__body">
           <slot></slot>
         </div>
-        <div class="hm-dialog__footer" v-if="$slots.footer">
+        <div class="digi-dialog__footer" v-if="$slots.footer">
           <slot name="footer"></slot>
         </div>
       </div>
@@ -23,7 +23,7 @@
 </template>
 <script>
 
-import closeMode from "../../assets/img/close.png";
+import closeMode from '../../assets/img/close.png'
 
 export default {
   name: 'DigiDialog',
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hm-dialog__wrapper {
+.digi-dialog__wrapper {
   position: fixed;
   top: 0;
   right: 0;
@@ -69,31 +69,26 @@ export default {
   z-index: 2001;
   background-color: rgba(0,0,0, .5);
 
-  .hm-dialog {
+  .digi-dialog {
     position: relative;
     margin: 15vh auto 50px;
-    background: #fff;
-    border-radius: 2px;
+    background: #23262f;
     box-shadow: 0 1px 3px rgba(0,0,0,.3);
     box-sizing: border-box;
     width: 30%;
-    background-color: #efefef;
-    border-radius: 8px;
-    .hm-dialog__header{
+    border-radius: 18px;
+    .digi-dialog__header{
       display: flex;
       justify-content: space-between;
-      padding: 10px;
+      padding: 1.5rem;
       align-items: center;
-      
-    }
-    __header {
-      padding: 20px 20px 10px;
-      .hm-dialog__title {
+      .digi-dialog__title {
         line-height: 24px;
-        font-size: 18px;
-        color: #303133;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #FCFCFD
       }
-      .hm-dialog__headerbtn {
+      .digi-dialog__headerbtn {
         position: absolute;
         top: 20px;
         right: 20px;
@@ -110,8 +105,8 @@ export default {
     }
 
     &__body {
-      padding: 30px 20px;
-      color: #606266;
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      color: rgb(212,212,215);
       font-size: 14px;
       word-break: break-all;
     }
