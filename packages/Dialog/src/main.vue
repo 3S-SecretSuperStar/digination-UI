@@ -106,7 +106,7 @@ export default {
 
     &__body {
       padding: 0 1.5rem 1.5rem 1.5rem;
-      color: rgb(212,212,215);
+      color: #FCFCFD;
       font-size: 14px;
       word-break: break-all;
     }
