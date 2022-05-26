@@ -83,9 +83,9 @@ export default {
       padding: 1.5rem;
       align-items: center;
       .digi-dialog__title {
-        line-height: 24px;
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
         color: #FCFCFD
       }
       .digi-dialog__headerbtn {

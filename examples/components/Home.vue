@@ -1,16 +1,11 @@
 <template>
   <div class="demo-main">
-    <div class="hero-overlay bg-opacity-60"></div>
-    <div class="hero-content text-center text-neutral-content">
-      <div >
-        <h1 class="mb-5 text-5xl font-bold">Digi Loading </h1>
-        <p class="mb-5">Digi Loading plugin.</p>
-
-        <div class="item">
-            <digi-button   type="info"  @click="handleClickLoading">button</digi-button>
-        </div>
-      </div>
+    <div class="item">
+        <digi-button   type="info"  @click="handleClickDialog">button</digi-button>
     </div>
+    <digi-dialog :title="title" width="20%" top="200px" :visible.sync="visible">
+      <div>this is message </div>
+    </digi-dialog>
   </div>
 
 </template>
@@ -18,20 +13,15 @@
 <script>
 export default {
   name: 'Home',
-  props: {
-    msg: String
-  },
   data () {
     return {
+      title: 'tip',
+      visible: false
     }
   },
   methods: {
-    handleClickLoading () {
-      let _this = this
-      _this.$Loading.show('Please wait while we sign you in')
-    //   setTimeout(() => {
-    //     _this.$Loading.hide()
-    //   }, 3000)
+    handleClickDialog () {
+      this.visible = true
     }
   }
 }

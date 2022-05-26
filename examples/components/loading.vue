@@ -7,7 +7,10 @@
         <p class="mb-5">Digi Loading plugin.</p>
 
         <div class="item">
-            <digi-button   type="info"  @click="handleClickLoading">button</digi-button>
+            <digi-button   type="info"  @click="handleClickLoading">button1</digi-button>
+        </div>
+        <div class="item">
+            <digi-button   type="info"  @click="handleClickLoading2">button2</digi-button>
         </div>
       </div>
     </div>
@@ -27,6 +30,13 @@ export default {
   },
   methods: {
     handleClickLoading () {
+      let _this = this
+      _this.$Loading.show('Please wait while we sign you in')
+      setTimeout(() => {
+        _this.$Loading.hide()
+      }, 3000)
+    },
+    handleClickLoading2 () {
       let _this = this
       _this.$Loading.show()
       setTimeout(() => {
