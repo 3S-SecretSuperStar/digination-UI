@@ -21,14 +21,7 @@
              <div class="toast-body">{{ item.message }}</div>
        </div>
       </div>
-
-        <!-- <div class="toast-header" :class="'bg-' + item.type" style="height: 35px;">
-          <strong class="ml-auto">
-            <i class="toast-icon" :class="getIconClass(item)" />
-          </strong>
           <span v-if="item.closeable" class="close"  @click="remove(item)"></span>
-        </div>
-        <div class="toast-body">{{ item.message }}</div> -->
       </div>
     </TransitionGroup>
   </div>
@@ -397,6 +390,10 @@ $toast-header-border-color:rgba(0,0,0,.05);
   display: block;
   width: 24px;
   height: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor:pointer;
 }
 .toast-container {
   position: fixed;
