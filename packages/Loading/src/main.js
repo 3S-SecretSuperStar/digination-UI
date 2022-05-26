@@ -10,8 +10,9 @@ const instance = new DigiLoading({
 instance.show = false;
 
 const Loading = {
-  show() {
+  show(message) {
     instance.show = true;
+    instance.message = message || "";
     document.body.appendChild(instance.$el);
   },
   hide() {
