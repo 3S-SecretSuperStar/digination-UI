@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import "@google/model-viewer"
+import '@google/model-viewer'
 export default {
   name: 'DigiModelViewer',
   props: {
@@ -41,12 +41,16 @@ export default {
       type: String,
       default: 'viewer-display'
     },
+    interactionPrompt: {
+      type: String,
+      default: 'none'
+    }
   },
   computed: {
     renderModela () {
-      return `<model-viewer style="width: ${this.viewWidth};height: ${this.viewHeight};"  autoplay="${this.isAutoPlay}" camera-controls="true" animation-name="Run" interpolation-decay="200" max-camera-orbit="auto 75deg auto" min-camera-orbit="auto 75deg auto"  disable-zoom="${this.isDisableZoom}" id="${this.modelClass}" class="${this.modelId}" poster="${this.poster}" src="${this.modelAddress}" ar-status="not-presenting"></model-viewer>`;
+      return `<model-viewer style="width: ${this.viewWidth};height: ${this.viewHeight};" interaction-prompt="${this.interactionPrompt}"  autoplay="${this.isAutoPlay}" camera-controls="true" animation-name="Run" interpolation-decay="200" max-camera-orbit="auto 75deg auto" min-camera-orbit="auto 75deg auto"  disable-zoom="${this.isDisableZoom}" id="${this.modelId}" class="${this.modelClass}" poster="${this.poster}" src="${this.modelAddress}" ar-status="not-presenting"></model-viewer>`
     }
-  },
+  }
 }
 
 </script>

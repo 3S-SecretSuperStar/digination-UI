@@ -1,53 +1,48 @@
 <template>
   <div class="demo-main">
-    <div class="hero-overlay bg-opacity-60"></div>
-    <div class="hero-content text-center text-neutral-content">
-      <div >
-        <h1 class="mb-5 text-5xl font-bold">Digi Toasts </h1>
-        <p class="mb-5">Digi Toasts plugin.</p>
-
         <div class="item">
-            <digi-button   type="info"  @click="handleClickInfo">button</digi-button>
-            <digi-button   type="success" @click="handleClickSuccess">button</digi-button>
-            <digi-button   type="warning"  @click="handleClickWarning">button</digi-button>
-            <digi-button   type="danger"  @click="handleClickError">button</digi-button>
+            <digi-button   type="info"  @click="handleClickSwitch">button</digi-button>
         </div>
-      </div>
-
-    </div>
-    <digi-toasts></digi-toasts>
+        <div class="item">
+            <digi-model-viewer :modelAddress="modelAddress"
+                                :poster="poster"
+                                :viewWidth="viewWidth"
+                                :viewHeight="viewHeight">
+            </digi-model-viewer>
+        </div>
   </div>
 
 </template>
 
 <script>
+import poster from '../assets/logo.png'
 export default {
   name: 'Home',
-  props: {
-    msg: String
-  },
   data () {
     return {
-      visible: false,
-      plain: true,
-      round: true,
-      loading: true,
-      circle: true,
-      disabled: true
+      modelAddress: '',
+      width: 300,
+      height: 300,
+      src: './1.glb',
+      viewWidth: '500px',
+      viewHeight: '500px',
+      poster: poster,
+      listglb: [
+        { 'url': './1.glb' },
+        { 'url': './2.glb' },
+        { 'url': './3.glb' }
+      ]
     }
   },
+  mounted () {
+    this.handleClickSwitch()
+  },
   methods: {
-    handleClickInfo () {
-      this.$toast.info('this is info message')
-    },
-    handleClickSuccess () {
-      this.$toast.success('this is successful message')
-    },
-    handleClickError () {
-      this.$toast.error('this is error message')
-    },
-    handleClickWarning () {
-      this.$toast.warning('this is warning message')
+    handleClickSwitch () {
+      let n = 3
+      let random_number = Math.floor(Math.random() * Math.floor(n))
+      var urlads = this.listglb[random_number].url
+      this.modelAddress = urlads
     }
   }
 }
