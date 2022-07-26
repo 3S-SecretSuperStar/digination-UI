@@ -1,17 +1,17 @@
-import { providers, connectors } from "../providers";
+import { providers, connectors } from '../providers'
 
-import bgBtShow from "../assets/images/bgBtHide.png";
-import bgBtHide from "../assets/images/bgBtShow.png";
-import closeMode from "../assets/images/close.png";
+import bgBtShow from '../assets/images/bgBtHide.png'
+import bgBtHide from '../assets/images/bgBtShow.png'
+import closeMode from '../assets/images/close.png'
 
-const ETH_WALLET_MODAL = "ETH_WALLET_MODAL";
+const ETH_WALLET_MODAL = 'ETH_WALLET_MODAL'
 
-const INITIAL_STATE = { show: false };
+const INITIAL_STATE = { show: false }
 
 const defaultOpt = {
   logo: '',
-  chainId: ""
-};
+  chainId: ''
+}
 
 export class Base {
   show = INITIAL_STATE.show;
@@ -19,72 +19,69 @@ export class Base {
   providers = null;
   walletOptions = [];
 
-  constructor(options = defaultOpt) {
-    this.options = options;
-    this.walletOptions = options.walletOptions;
-    this.maskColor = options.maskColor ? options.maskColor : "rgb(30, 30, 30, 0.8)";
-    this.bgColor = options.bgColor ? options.bgColor : "#363636";
-    this.borderColor = options.borderColor ? options.borderColor : "#faba30";
+  constructor (options = defaultOpt) {
+    this.options = options
+    this.walletOptions = options.walletOptions
+    this.maskColor = options.maskColor ? options.maskColor : 'rgb(30, 30, 30, 0.8)'
+    this.bgColor = options.bgColor ? options.bgColor : '#363636'
+    this.borderColor = options.borderColor ? options.borderColor : '#faba30'
     this.providers = Object.keys(connectors).map((id) => {
-      let providerInfo;
-      providerInfo = this.getProviderInfoById(id);
+      let providerInfo
+      providerInfo = this.getProviderInfoById(id)
 
       if (this.walletOptions[id]) {
-        const options = this.walletOptions[id];
-        if (typeof options.displayView !== "undefined") {
+        const options = this.walletOptions[id]
+        if (typeof options.displayView !== 'undefined') {
           providerInfo = {
             ...providerInfo,
-            ...this.walletOptions[id].displayView,
-          };
+            ...this.walletOptions[id].displayView
+          }
         }
       }
 
       return {
         ...providerInfo,
-        connector: connectors[id],
-      };
-    });
-    this.renderModal();
+        connector: connectors[id]
+      }
+    })
+    this.renderModal()
   }
   getProviderInfoById (id) {
-    return this.filterProviders("id", id);
+    return this.filterProviders('id', id)
   }
 
   filterProviders (param, value) {
     const match = this.filterMatches(
       Object.values(providers),
-      x => x[param] === value,
-    );
+      x => x[param] === value
+    )
     return match
   }
 
   filterMatches (array, condition) {
-    let result = null;
-    const matches = array.filter(condition);
+    let result = null
+    const matches = array.filter(condition)
     if (!!matches && matches.length) {
-      result = matches[0];
+      result = matches[0]
     }
-    return result;
+    return result
   }
 
-
-  
-
-   getUserOptions () {
-    const providerList = this.providers.map(({ id }) => id);
-    const userOptions = [];
+  getUserOptions () {
+    const providerList = this.providers.map(({ id }) => id)
+    const userOptions = []
     providerList.forEach((id) => {
-      let provider = this.getProvider(id);
+      let provider = this.getProvider(id)
       if (typeof (this.walletOptions[id]) !== 'undefined') {
-        const { id, name, logo, connector } = provider;
+        const { id, name, logo, connector } = provider
         userOptions.push({
           id,
           name,
           logo,
           connector
-        });
+        })
       }
-    });
+    })
     // const providerList = [];
 
     // defaultProviderList.forEach((id) => {
@@ -94,72 +91,69 @@ export class Base {
     //     providerList.push(id);
     //   }
     // });
-    return userOptions;
-
+    return userOptions
   }
 
   shouldDisplayProvider (id) {
-    const provider = this.getProvider(id);
-    if (typeof provider !== "undefined") {
-      const providerPackageOptions = this.walletOptions[id];
+    const provider = this.getProvider(id)
+    if (typeof provider !== 'undefined') {
+      const providerPackageOptions = this.walletOptions[id]
       if (providerPackageOptions) {
-        const isProvided = !!providerPackageOptions.package;
+        const isProvided = !!providerPackageOptions.package
         if (isProvided) {
           const requiredOptions = provider.package
             ? provider.package.required
-            : undefined;
+            : undefined
           if (requiredOptions && requiredOptions.length) {
-            const providedOptions = providerPackageOptions.options;
+            const providedOptions = providerPackageOptions.options
             if (providedOptions && Object.keys(providedOptions).length) {
               const matches = this.findMatchingRequiredOptions(
                 requiredOptions,
                 providedOptions
-              );
+              )
               if (requiredOptions.length === matches.length) {
-                return true;
+                return true
               }
             }
           } else {
-            return true;
+            return true
           }
         }
       }
     }
-    return false;
+    return false
   }
   getProvider (id) {
     return this.filterMatches(
       this.providers,
-      x => x.id === id,
-    );
+      x => x.id === id
+    )
   }
   findMatchingRequiredOptions (requiredOptions, providedOptions) {
     const matches = requiredOptions.filter(requiredOption => {
-      if (typeof requiredOption === "string") {
-        return requiredOption in providedOptions;
+      if (typeof requiredOption === 'string') {
+        return requiredOption in providedOptions
       }
       const matches = this.findMatchingRequiredOptions(
         requiredOption,
         providedOptions
-      );
-      return matches && matches.length;
-    });
-    return matches;
+      )
+      return matches && matches.length
+    })
+    return matches
   }
-
-
 
   connect = async () => {
     return await new Promise((resolve, reject) => {
       (async () => {
-        var closeBtn = document.getElementById("eth-close-box");
+        var closeBtn = document.getElementById('eth-close-box')
         closeBtn.onclick = function () {
           // $('#ETH_WALLET_MODAL .connect').unbind();
-          document.getElementById('ETH_WALLET_MODAL').style.display = "none"
+          document.getElementById('ETH_WALLET_MODAL').style.display = 'none'
         }
         var _this = this
-        if (sessionStorage.getItem("injected")) {
-          var name = sessionStorage.getItem("injected")
+        if (sessionStorage.getItem('injected')) {
+          var name = sessionStorage.getItem('injected')
           _this.connectTo(name).then((res) => {
             resolve(res)
           }).catch((error) => {
@@ -170,41 +164,40 @@ export class Base {
           var elements = document.getElementsByClassName('connect')
           Array.from(elements).forEach(function (element) {
             element.onclick = function () {
-              var name = element.querySelector('.cl-connect-btu').attributes["alt"].value
+              var name = element.querySelector('.cl-connect-btu').attributes['alt'].value
               _this.connectTo(name).then((res) => {
                 resolve(res)
               }).catch((error) => {
                 reject(error)
               })
             }
-
-          });
+          })
         }
-      })().catch(e => console.log("error: " + e));
-    });
+      })().catch(e => console.log('error: ' + e))
+    })
   }
 
   async connectTo (name) {
     return await new Promise((resolve, reject) => {
       (async () => {
         var _this = this
-        var connector = _this.getProvider(name).connector;
+        var connector = _this.getProvider(name).connector
         connector(_this.walletOptions[name].options).then((res) => {
-          document.getElementById('ETH_WALLET_MODAL').style.display = "none"
-          sessionStorage.setItem("injected", name)
+          document.getElementById('ETH_WALLET_MODAL').style.display = 'none'
+          sessionStorage.setItem('injected', name)
           resolve(res)
         }).catch((error) => {
-          document.getElementById('ETH_WALLET_MODAL').style.display = "none"
+          document.getElementById('ETH_WALLET_MODAL').style.display = 'none'
           sessionStorage.removeItem('injected')
           reject(error)
         })
-      })().catch(error => reject(error));
-    });
+      })().catch(error => reject(error))
+    })
   }
 
   disconnect = async (provider) => {
     if (provider) {
-      if (sessionStorage.getItem("injected") === "walletconnect") {
+      if (sessionStorage.getItem('injected') === 'walletconnect') {
         provider.connector.killSession()
         sessionStorage.removeItem('walletconnect')
         sessionStorage.removeItem('loglevel:webpack-dev-server')
@@ -215,18 +208,18 @@ export class Base {
 
   fetcher = async (...args) => fetch(...args).then((res) => res.json());
 
-  // get Chain Detail By Id 
+  // get Chain Detail By Id
   async getChainDetailById (chainId) {
-    const chains = await this.fetcher('https://chainid.network/chains.json');
+    const chains = await this.fetcher('https://chainid.network/chains.json')
     let newArr = chains.filter(item => item.chainId === chainId)
-    return  newArr[0]
+    return newArr[0]
   }
 
   renderModal () {
-    var userWalletProviderList = this.getUserOptions();
-    const el = document.createElement("div");
-    el.id = ETH_WALLET_MODAL;
-    document.body.appendChild(el);
+    var userWalletProviderList = this.getUserOptions()
+    const el = document.createElement('div')
+    el.id = ETH_WALLET_MODAL
+    document.body.appendChild(el)
     var htmllet =
       `<div class="eth-warp">
             <div class="eth-main">
@@ -234,7 +227,7 @@ export class Base {
                   <span id="eth-close-box" > </span>
               </div>
               <div class="eth-main-wallet">
-              `;
+              `
     if (typeof (this.options.logo) !== 'undefined') {
       htmllet += `
                   <div class="eth-main-wallet-logo"> 
@@ -335,10 +328,29 @@ export class Base {
       .eth-main-wallet .img-WalletConnect {
         margin-right: 14px;
       }
+      @media (max-width: 850px) {
+        .eth-warp .eth-main {
+          width:80%
+        }
+        .eth-main-wallet .cl-connect-btu{
+          flex-direction: column;
+          background: #8e9b8c;
+          height: auto;
+          width: 100%;
+          padding: 1rem;
+          border-radius: 1rem;
+        }
+        .eth-main-wallet .cl-connect-btu:hover {
+          background: #ffd233
+        }
+        .eth-main-wallet .img-MetaMask {
+          margin-right: 0;
+          margin-bottom:1rem
+        }
+
+      }
       </style>
     `
-    document.getElementById(ETH_WALLET_MODAL).innerHTML = htmllet;
+    document.getElementById(ETH_WALLET_MODAL).innerHTML = htmllet
   }
-
-
 }

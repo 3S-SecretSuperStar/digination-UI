@@ -6,6 +6,7 @@
 </template>
 <script>
 import '@google/model-viewer'
+// import '@google/model-viewer/dist/model-viewer'
 export default {
   name: 'DigiModelViewer',
   props: {
